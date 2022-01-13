@@ -4,6 +4,11 @@
  * This software may be modified and distributed under the terms
  * of the MIT license.  See the LICENSE file for details.
  *
+ * Note:
+ * -----
+ * for use on Arduino Uno  board, set jumpers to UNO  on VRSSM Shield!
+ * for use on Arduino Mega board, set jumpers to Mega on VRSSM Shield!
+ * 
  */
  
 #include <Servo.h>                        // The ALLBOT library needs the servo.h library
@@ -37,15 +42,16 @@ boolean receivelog = false;               // Set this to true if you want to see
 void setup() 
 { 
   // NAME.attach(motorname, pin, init-angle, flipped, offset-angle);
-  BOT.attach(hipFrontLeft,   A1,  45, 0, 0);
-  BOT.attach(hipFrontRight,  A0,  45, 1, 0);
-  BOT.attach(hipRearLeft,     9,  45, 1, 0);
-  BOT.attach(hipRearRight,    4,  45, 0, 0);
+  
+  BOT.attach(hipFrontLeft,   A1,  45, 0, 0); //for Arduino Uno pin A1        // for Arduino Mega pin 24 = SV3
+  BOT.attach(hipFrontRight,  A0,  45, 1, 0); //for Arduino Uno pin A0        // for Arduino Mega pin 31 = SV10
+  BOT.attach(hipRearLeft,     9,  45, 1, 0); //for Arduino Uno pin 9 = SV9   // for Arduino Mega pin 36 = SV15
+  BOT.attach(hipRearRight,    4,  45, 0, 0); //for Arduino Uno pin 4 = SV4   // for Arduino Mega pin 49 = SV28
  
-  BOT.attach(kneeFrontLeft,  11,  45, 1, 0);
-  BOT.attach(kneeFrontRight,  2,  45, 0, 0);
-  BOT.attach(kneeRearLeft,   10,  45, 1, 0);
-  BOT.attach(kneeRearRight,   3,  45, 0, 0);
+  BOT.attach(kneeFrontLeft,  11,  45, 1, 0); //for Arduino Uno pin 11 = SV11 // for Arduino Mega pin 23 = SV2
+  BOT.attach(kneeFrontRight,  2,  45, 0, 0); //for Arduino Uno pin 2  = SV2  // for Arduino Mega pin 32 = SV11
+  BOT.attach(kneeRearLeft,   10,  45, 1, 0); //for Arduino Uno pin 10 = SV10 // for Arduino Mega pin 35 = SV14
+  BOT.attach(kneeRearRight,   3,  45, 0, 0); //for Arduino Uno pin 3  = SV3  // for Arduino Mega pin 50 = SV29
 
   // INIT sounder
   pinMode(sounderPin, OUTPUT);
